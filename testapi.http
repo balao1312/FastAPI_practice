@@ -12,6 +12,7 @@ content-type: application/json
 
 {
     "author": "Balao",
+    "title": "Test",
     "content": "This is a test!!"
 }
 

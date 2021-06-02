@@ -4,6 +4,7 @@ from datetime import datetime
 
 class Blog(BaseModel):
     author: str
+    title: str
     content: str
     m_time: datetime = None
     comments: Optional[list] = []

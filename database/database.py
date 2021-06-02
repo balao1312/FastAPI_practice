@@ -27,9 +27,9 @@ class PostgreSQL_connection():
         aa = self.cursor.fetchall()
         return aa
 
-    def create_new_blog(self, author, content, m_time, comments, likes):
-        sql = f'''INSERT INTO blogs (author, content, m_time, comments, likes)
-        VALUES ('{author}', '{content}', '{m_time}', '{comments}', {likes});'''
+    def create_new_blog(self, author, title, content, m_time, comments, likes):
+        sql = f'''INSERT INTO blogs (author, title, content, m_time, comments, likes)
+        VALUES ('{author}', '{title}', '{content}', '{m_time}', '{comments}', {likes});'''
         self.cursor.execute(sql)
         self.con.commit()
         return True
@@ -42,6 +42,7 @@ class PostgreSQL_connection():
             create table blogs (
             pk integer not null default nextval('blogs_pk_seq'::regclass),
             author text not null,
+            title text not null,
             content text COLLATE pg_catalog."default" NOT NULL,
             m_time timestamp not null,
             comments jsonb,

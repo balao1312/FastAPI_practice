@@ -1,6 +1,5 @@
 from fastapi import FastAPI
 import uvicorn
-from typing import List
 
 from models.blogs import Blog
 from database.database import db_con
@@ -30,7 +29,8 @@ def show_all_blogs():
 @app.post('/blog')
 def create_blog(blog: Blog):
     db_con.create_new_blog(
-        author = blog.author, 
+        author = blog.author,
+        title = blog.title,
         content = blog.content,
         m_time = blog.m_time,
         comments = blog.comments,
