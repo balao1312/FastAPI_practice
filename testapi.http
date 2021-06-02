@@ -2,3 +2,30 @@ GET http://localhost:8000/
 
 ###
 GET http://localhost:8000/balao
+
+###
+GET http://localhost:8000/blog
+
+###
+POST http://localhost:8000/blog
+content-type: application/json
+
+{
+    "author": "Balao",
+    "content": "This is a test!!"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+# 重設 table 很恐怖喔
+###
+# GET http://localhost:8000/reset_table_blogs
