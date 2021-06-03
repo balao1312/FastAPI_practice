@@ -20,6 +20,7 @@ def balao():
                 'age': '38',
                 'gender': 'male',
                 'profession': 'ToDiGong'
+
             }
             }
 
