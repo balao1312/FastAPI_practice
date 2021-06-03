@@ -20,9 +20,8 @@ def balao():
                 'age': '38',
                 'gender': 'male',
                 'profession': 'ToDiGong'
-
             }
-            }
+    }
 
 
 @app.get('/zong_yu')
