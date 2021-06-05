@@ -4,7 +4,14 @@ GET http://localhost:8000/
 GET http://localhost:8000/balao
 
 ###
+GET http://localhost:8000/zong_yu
+
+###
 GET http://localhost:8000/blog
+
+###
+GET http://localhost:8000/blog/611
+
 
 ###
 POST http://localhost:8000/blog
@@ -29,4 +36,4 @@ content-type: application/json
 
 # 重設 table 很恐怖喔
 ###
-# GET http://localhost:8000/reset_table_blogs
+GET http://localhost:8000/reset_table_blogs

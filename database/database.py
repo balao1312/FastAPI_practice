@@ -22,6 +22,18 @@ class PostgreSQL_connection():
         self.cursor.execute('SELECT datname FROM pg_database;')
         return self.cursor.fetchall()
     
+    def get_blog_by_pk(self, pk):
+        if not pk.isdigit():
+            return {'error': 'pk is not digit.'}
+
+        self.cursor.execute(f"SELECT * from blogs where pk = '{pk}'")
+
+        result = self.cursor.fetchall()
+        if not result:
+            return {'error': 'target is not exist.'}
+
+        return result
+
     def show_all_blogs(self):
         self.cursor.execute('SELECT * from blogs;')
         aa = self.cursor.fetchall()
