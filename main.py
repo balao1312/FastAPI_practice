@@ -36,6 +36,18 @@ def zong_yu():
             }
 
 
+@app.get('/yiling')
+def yiling():
+    return {'data':
+            {
+                'name': 'yiling',
+                'age': '32',
+                'gender': 'female',
+                'profession': 'Cat Addict'
+            }
+            }
+
+
 @app.get('/blog')
 def show_all_blogs():
     data = db_con.show_all_blogs()
