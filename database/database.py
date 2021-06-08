@@ -7,10 +7,10 @@ from credential import db_info
 class PostgreSQL_connection():
     def __init__(self, host, database, user, password, port=5432):
         self.con = psycopg2.connect(
-            host=db_info['host'], 
-            user=db_info['user'], 
-            database=db_info['database'], 
-            password=db_info['password'], 
+            host=db_info['host'],
+            user=db_info['user'],
+            database=db_info['database'],
+            password=db_info['password'],
             port=db_info['port']
         )
         self.cursor = self.con.cursor(cursor_factory=RealDictCursor)
@@ -21,7 +21,7 @@ class PostgreSQL_connection():
     def show_all_databases(self):
         self.cursor.execute('SELECT datname FROM pg_database;')
         return self.cursor.fetchall()
-    
+
     def get_blog_by_pk(self, pk):
         if not pk.isdigit():
             return {'error': 'pk is not digit.'}
@@ -33,6 +33,12 @@ class PostgreSQL_connection():
             return {'error': 'target is not exist.'}
 
         return result
+
+    def delete_blog_by_pk(self, pk):
+        if not pk.isdigit():
+            return {'error': 'pk is not digit.'}
+        self.cursor.execute(f"delete from blogs where pk = '{pk}'")
+        return True
 
     def show_all_blogs(self):
         self.cursor.execute('SELECT * from blogs;')
@@ -65,10 +71,11 @@ class PostgreSQL_connection():
         self.cursor.execute(sql)
         self.con.commit()
 
+
 db_con = PostgreSQL_connection(
-    host = db_info['host'],
-    user = db_info['user'],
-    database = db_info['database'],
-    password = db_info['password'],
-    port = db_info['port']
+    host=db_info['host'],
+    user=db_info['user'],
+    database=db_info['database'],
+    password=db_info['password'],
+    port=db_info['port']
 )

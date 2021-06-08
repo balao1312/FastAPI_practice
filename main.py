@@ -62,6 +62,14 @@ def get_blog_by_pk(pk):
     return {'data': data}
 
 
+@app.delete('/blog/{pk}')
+def delete_blog_by_pk(pk):
+    message = db_con.delete_blog_by_pk(pk)
+    if 'error' in message:
+        return message
+    return {f'{pk}': 'deletion successful'}
+
+
 @app.post('/blog')
 def create_blog(blog: Blog):
     db_con.create_new_blog(
