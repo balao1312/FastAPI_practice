@@ -1,4 +1,3 @@
-from datetime import datetime, date
 import psycopg2
 from psycopg2.extras import RealDictCursor
 from credential import db_info
@@ -37,20 +36,27 @@ class PostgreSQL_connection():
     def delete_blog_by_pk(self, pk):
         if not pk.isdigit():
             return {'error': 'pk is not digit.'}
+
+        self.cursor.execute(f"SELECT * from blogs where pk = '{pk}'")
+        result = self.cursor.fetchall()
+        if not result:
+            return {'error': 'target is not exist'}
+
         self.cursor.execute(f"delete from blogs where pk = '{pk}'")
-        return True
+        self.con.commit()
+        return {'status': 'success'}
 
     def show_all_blogs(self):
         self.cursor.execute('SELECT * from blogs;')
-        aa = self.cursor.fetchall()
-        return aa
+        result = self.cursor.fetchall()
+        return result
 
     def create_new_blog(self, author, title, content, m_time, comments, likes):
         sql = f'''INSERT INTO blogs (author, title, content, m_time, comments, likes)
         VALUES ('{author}', '{title}', '{content}', '{m_time}', '{comments}', {likes});'''
         self.cursor.execute(sql)
         self.con.commit()
-        return True
+        return {'status': 'success'}
 
     # Will RESET table blogs!! Use with care!!
     def reset_table_blogs(self):
@@ -70,6 +76,7 @@ class PostgreSQL_connection():
             tablespace pg_default;'''
         self.cursor.execute(sql)
         self.con.commit()
+        return {'status': 'success'}
 
 
 db_con = PostgreSQL_connection(

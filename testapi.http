@@ -1,20 +1,25 @@
-GET http://localhost:8000/
+GET http://localhost:8000/blog-api
 
 ###
-GET http://localhost:8000/balao
+GET http://localhost:8000/blog-api/balao
 
 ###
-GET http://localhost:8000/zong_yu
+GET http://localhost:8000/blog-api/zong_yu
 
 ###
-GET http://localhost:8000/blog
+GET http://localhost:8000/blog-api/blog
 
 ###
-GET http://localhost:8000/blog/611
-
+GET http://localhost:8000/blog-api/blog/11
 
 ###
-POST http://localhost:8000/blog
+GET http://localhost:8000/blog-api/blog/611
+
+###
+DELETE  http://localhost:8000/blog-api/blog/14
+
+###
+POST http://localhost:8000/blog-api/blog
 content-type: application/json
 
 {
@@ -36,4 +41,4 @@ content-type: application/json
 
 # 重設 table 很恐怖喔
 ###
-GET http://localhost:8000/reset_table_blogs
+#GET http://localhost:8000/blog-api/reset_table_blogs
