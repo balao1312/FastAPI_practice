@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 import uvicorn
 from application.routers.routers import init_apis
+from fastapi.middleware.cors import CORSMiddleware
+from application.database import database
 
 app = FastAPI(
     docs_url="/docs",
@@ -9,7 +11,25 @@ app = FastAPI(
     version="0.1.0",
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 init_apis(app)
+
+
+@app.on_event("startup")
+async def startup():
+    await database.connect()
+
+
+@app.on_event("shutdown")
+async def shutdown():
+    await database.disconnect()
 
 
 @app.get('/zong_yu')
@@ -34,6 +54,7 @@ def yiling():
                 'profession': 'Cat Addict'
             }
             }
+
 
 @app.get('/yulin')
 def yulin():
