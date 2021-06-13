@@ -34,38 +34,38 @@ async def shutdown():
 
 @app.get('/zong_yu')
 def zong_yu():
-    return {'data':
-            {
-                'name': 'zong_yu',
-                'age': '30',
-                'gender': 'male',
-                'profession': 'av actor'
-            }
-            }
+    return {
+        'data': {
+            'name': 'zong_yu',
+            'age': '30',
+            'gender': 'male',
+            'profession': 'av actor'
+        }
+    }
 
 
 @app.get('/yiling')
 def yiling():
-    return {'data':
-            {
-                'name': 'yiling',
-                'age': '32',
-                'gender': 'female',
-                'profession': 'Cat Addict'
-            }
-            }
+    return {
+        'data': {
+            'name': 'yiling',
+            'age': '32',
+            'gender': 'female',
+            'profession': 'Cat Addict'
+        }
+    }
 
 
 @app.get('/yulin')
 def yulin():
-    return {'data':
-            {
-                'name': 'yulin',
-                'age': '29',
-                'gender': 'male',
-                'profession': 'dog Addict'
-            }
-            }
+    return {
+        'data': {
+            'name': 'yulin',
+            'age': '29',
+            'gender': 'male',
+            'profession': 'dog Addict'
+        }
+    }
 
 
 if __name__ == '__main__':

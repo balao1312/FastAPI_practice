@@ -5,11 +5,11 @@ router = APIRouter()
 
 @router.get('/')
 def balao():
-    return {'data':
-            {
-                'name': 'balao',
-                'age': '38',
-                'gender': 'male',
-                'profession': 'todigong'
-            }
-            }
+    return {
+        'data': {
+            'name': 'balao',
+            'age': '38',
+            'gender': 'male',
+            'profession': 'todigong'
+        }
+    }
