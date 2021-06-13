@@ -29,7 +29,7 @@ class PostgreSQL_connection():
 
         result = self.cursor.fetchall()
         if not result:
-            return {'error': 'target is not exist.'}
+            return {'error': 'target does not exist.'}
 
         return result
 
@@ -40,7 +40,7 @@ class PostgreSQL_connection():
         self.cursor.execute(f"SELECT * from blogs where pk = '{pk}'")
         result = self.cursor.fetchall()
         if not result:
-            return {'error': 'target is not exist'}
+            return {'error': 'target does not exist.'}
 
         self.cursor.execute(f"delete from blogs where pk = '{pk}'")
         self.con.commit()

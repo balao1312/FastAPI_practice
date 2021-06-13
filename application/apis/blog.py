@@ -6,7 +6,7 @@ router = APIRouter()
 
 
 @router.get('/')
-def main():
+def status():
     return {'host': 'on'}
 
 @router.get('/blog')
