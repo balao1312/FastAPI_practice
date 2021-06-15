@@ -13,7 +13,11 @@ class Blog(BaseModel):
 
     @validator('m_time', pre=True, always=True)
     def set_ts_now(cls, v):
-        return v or datetime.now()
+        if v == '%Y-%m-%d %H:%M:%S':
+            return v
+        elif v == '%Y-%m-%dT%H:%M:%SZ':
+            return v
+        return datetime.now()
 
 class UpdateBlog(BaseModel):
     title: str
@@ -22,4 +26,8 @@ class UpdateBlog(BaseModel):
 
     @validator('m_time', pre=True, always=True)
     def set_ts_now(cls, v):
-        return v or datetime.now()
+        if v == '%Y-%m-%d %H:%M:%S':
+            return v
+        elif v == '%Y-%m-%dT%H:%M:%SZ':
+            return v
+        return datetime.now()
