@@ -28,17 +28,11 @@ content-type: application/json
     "content": "This is a test!!"
 }
 
-
-
-
-
-
-
-
-
-
-
-
-# 重設 table 很恐怖喔
 ###
-#GET http://localhost:8000/blog-api/reset_table_blogs
+PUT http://localhost:8000/blog-api/blog/15
+content-type: application/json
+
+{
+    "title": "Modified Title",
+    "content": "modified: This is a test!!"
+}
