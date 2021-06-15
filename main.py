@@ -7,7 +7,7 @@ from application.database import database
 app = FastAPI(
     docs_url="/blog-api/docs",
     redoc_url="/blog-api/redoc",
-    openapi_url="/openapi.json",
+    openapi_url="/blog-api/openapi.json",
     version="0.1.0",
 )
 
