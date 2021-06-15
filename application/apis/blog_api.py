@@ -2,6 +2,7 @@ from fastapi import APIRouter
 from ..database import database
 from ..sqlalchemy_models.tables import blog_table
 from ..pydantic_models.blog import Blog, UpdateBlog
+from sqlalchemy import desc
 
 router = APIRouter()
 
@@ -13,7 +14,8 @@ def status():
 
 @router.get("/blog")
 async def get_all_blogs():
-    query = blog_table.select().order_by(blog_table.c.pk)
+    query = blog_table.select().order_by(desc(
+        blog_table.c.pk))
     return await database.fetch_all(query)
 
 
@@ -50,10 +52,10 @@ async def update_blog_by_pk(pk: int, blog: UpdateBlog):
     if not data:
         return {'detail': 'target does not exist.'}
     query = blog_table.update().where(blog_table.c.pk == pk).values(
-		title=blog.title,
-		content=blog.content,
-		m_time=blog.m_time
-	)
+        title=blog.title,
+        content=blog.content,
+        m_time=blog.m_time
+    )
     await database.execute(query)
     return {'status': f'blog with pk = {pk} updated successfully'}
 
