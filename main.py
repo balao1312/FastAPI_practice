@@ -5,8 +5,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from application.database import database
 
 app = FastAPI(
-    docs_url="/docs",
-    redoc_url="/redoc",
+    docs_url="/blog-api/docs",
+    redoc_url="/blog-api/redoc",
     openapi_url="/openapi.json",
     version="0.1.0",
 )
