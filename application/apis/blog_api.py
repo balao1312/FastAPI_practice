@@ -29,7 +29,7 @@ async def get_blog_by_pk(pk: int):
 
 
 @router.post("/blog")
-async def create_human_resource(blog: Blog):
+async def create_blog(blog: Blog):
     query = blog_table.insert().values(
         author=blog.author,
         title=blog.title,
